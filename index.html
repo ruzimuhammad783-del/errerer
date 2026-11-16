@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lola &amp; Atirgul — Premium Gul Do‘koni va Floristika Studiyasi</title>
+    <meta name="description" content="Toshkent bo'ylab 2 soat ichida eng sara va yangi guldastalarni yetkazib berish xizmati. Mualliflik buketlari, pionlar, atirgullar va maxsus kompozitsiyalar.">
+    
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF8F5',
+                        cream: '#F3EFEA',
+                        emeraldDeep: '#1B3B2B',
+                        emeraldHover: '#132B1F',
+                        dustyRose: '#D4837D',
+                        roseSoft: '#F6E8E7',
+                        goldAccent: '#C5A059',
+                        charcoal: '#232625'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(27, 59, 43, 0.08)',
+                        'card': '0 4px 24px -2px rgba(27, 59, 43, 0.06)',
+                        'float': '0 20px 50px -12px rgba(27, 59, 43, 0.18)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS & Animations -->
+    <style>
+        body {
+            background-color: #FAF8F5;
+            color: #232625;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 9999px;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(27, 59, 43, 0.08);
+        }
+
+        /* Smooth Card Zoom */
+        .flower-card-img {
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .flower-card:hover .flower-card-img {
+            transform: scale(1.07);
+        }
+
+        /* Floating Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 4.5s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 5.2s ease-in-out 1.5s infinite;
+        }
+
+        /* Modal & Drawer Transitions */
+        .drawer-enter {
+            transform: translateX(0%);
+        }
+        .drawer-exit {
+            transform: translateX(100%);
+        }
+
+        /* Hide horizontal scrollbar on category pills */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emeraldDeep selection:text-ivory">
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none max-w-xs w-full px-4 sm:px-0"></div>
+
+    <!-- ==================== TOP ANNOUNCEMENT BAR ==================== -->
+    <div class="bg-emeraldDeep text-ivory text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+        <span class="text-goldAccent font-semibold">✨ Maxsus taklif:</span> Birinchi buyurtma uchun <code class="bg-white/15 px-2 py-0.5 rounded text-goldAccent font-bold">GUL10</code> promokodi bilan 10% chegirma!
+    </div>
+
+    <!-- ==================== STICKY NAVIGATION HEADER ==================== -->
+    <header class="sticky top-0 z-40 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#top" class="flex items-center gap-2.5 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-full bg-emeraldDeep text-goldAccent flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                        <!-- Custom Botanical SVG Icon -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-9m0 0c-3.5 0-6-2.5-6-6 0-2.5 2-4.5 6-5 4 .5 6 2.5 6 5 0 3.5-2.5 6-6 6zm0 0c2.5 0 5.5 1.5 6.5 4.5M12 16c-2.5 0-5.5 1.5-6.5 4.5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold text-emeraldDeep tracking-tight block leading-none">Lola &amp; Atirgul</span>
+                        <span class="text-[10px] uppercase tracking-[0.22em] text-goldAccent font-semibold block mt-0.5">Floristika Studiyasi</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal/85">
+                    <a href="#katalog" class="hover:text-emeraldDeep transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-goldAccent hover:after:w-full after:transition-all">Katalog</a>
+                    <a href="#konstruktor" class="hover:text-emeraldDeep transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-goldAccent hover:after:w-full after:transition-all">Buket Yaratish</a>
+                    <a href="#afzalliklar" class="hover:text-emeraldDeep transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-goldAccent hover:after:w-full after:transition-all">Yetkazib Berish</a>
+                    <a href="#fikrlar" class="hover:text-emeraldDeep transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-goldAccent hover:after:w-full after:transition-all">Mijozlar Fikri</a>
+                    <a href="#savollar" class="hover:text-emeraldDeep transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-goldAccent hover:after:w-full after:transition-all">FAQ</a>
+                </nav>
+
+                <!-- Action Buttons (Search shortcut, Cart, Mobile Menu) -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Quick Phone Link -->
+                    <a href="tel:+998901234567" class="hidden lg:flex items-center gap-2 text-xs font-semibold text-emeraldDeep bg-cream hover:bg-emeraldDeep hover:text-ivory px-3.5 py-2.5 rounded-full transition-colors">
+                        <svg class="w-4 h-4 text-goldAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <span>+998 90 123-45-67</span>
+                    </a>
+
+                    <!-- Cart Trigger Button -->
+                    <button onclick="toggleCart(true)" aria-label="Savatchani ochish" class="relative flex items-center gap-2 bg-emeraldDeep hover:bg-emeraldHover text-ivory px-4 py-2.5 rounded-full text-sm font-semibold shadow-soft transition-all active:scale-95">
+                        <svg class="w-5 h-5 text-goldAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Savatcha</span>
+                        <span id="cartBadge" class="bg-dustyRose text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button onclick="toggleMobileMenu()" aria-label="Menyu" class="md:hidden p-2.5 rounded-full bg-cream text-emeraldDeep hover:bg-emeraldDeep hover:text-ivory transition-colors">
+                        <svg id="mobileMenuIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-ivory border-t border-emeraldDeep/10 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+            <a href="#katalog" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-emeraldDeep hover:bg-cream">🌸 Guldastalar katalogi</a>
+            <a href="#konstruktor" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-emeraldDeep hover:bg-cream">✨ O‘z guldastangizni yarating</a>
+            <a href="#afzalliklar" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-emeraldDeep hover:bg-cream">🚚 Yetkazib berish shartlari</a>
+            <a href="#fikrlar" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-emeraldDeep hover:bg-cream">💬 Mijozlar fikri</a>
+            <a href="#savollar" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-emeraldDeep hover:bg-cream">❓ Ko‘p beriladigan savollar</a>
+            <div class="pt-2 border-t border-emeraldDeep/10">
+                <a href="tel:+998901234567" class="flex items-center justify-center gap-2 w-full bg-emeraldDeep text-ivory py-3 rounded-xl font-semibold text-sm">
+                    📞 Qo‘ng‘iroq qilish: +998 90 123-45-67
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="top" class="relative overflow-hidden pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-28">
+        <!-- Decorative Background Blur Orbs -->
+        <div class="absolute -top-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-dustyRose/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-goldAccent/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Left Column: Typography & CTA -->
+                <div class="lg:col-span-6 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-roseSoft border border-dustyRose/30 text-emeraldDeep text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-dustyRose animate-ping"></span>
+                        <span>Gollandiya va Ekvadordan yangi partiya keldi</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-emeraldDeep leading-[1.12] tracking-tight">
+                        His-tuyg‘ularni <span class="italic text-dustyRose font-medium">gullar tili</span> bilan ifoda eting
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-charcoal/75 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Professional floristlarimiz tomonidan mehr bilan yaratilgan mualliflik guldastalari. Har bir buketga bepul tabriknoma va gul ozuqasi qo‘shib beriladi.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                        <a href="#katalog" class="w-full sm:w-auto px-8 py-4 rounded-full bg-emeraldDeep hover:bg-emeraldHover text-ivory font-semibold text-sm sm:text-base shadow-float transition-all hover:-translate-y-0.5 text-center">
+                            Guldasta tanlash
+                        </a>
+                        <a href="#konstruktor" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-cream text-emeraldDeep border border-emeraldDeep/20 font-semibold text-sm sm:text-base shadow-soft transition-all hover:-translate-y-0.5 text-center">
+                            ✨ Maxsus buyurtma
+                        </a>
+                    </div>
+
+                    <!-- Trust Metrics -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-emeraldDeep/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep">2 soat</p>
+                            <p class="text-xs text-charcoal/65 mt-0.5">Tezkor yetkazish</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep">4.9 ★</p>
+                            <p class="text-xs text-charcoal/65 mt-0.5">2,400+ mamnun mijoz</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep">100%</p>
+                            <p class="text-xs text-charcoal/65 mt-0.5">Yangi uzilgan gullar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Hero Imagery & Floating Badges -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-md sm:max-w-lg">
+                        <!-- Arch Frame Image -->
+                        <div class="rounded-t-[180px] rounded-b-[32px] overflow-hidden shadow-float border-8 border-white bg-cream aspect-[4/5]">
+                            <img 
+                                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=900&q=85" 
+                                alt="Hashamatli pion va atirgullardan iborat mualliflik guldastasi"
+                                onerror="handleImgError(this, 'Mualliflik Guldastasi')"
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+
+                        <!-- Floating Badge 1: Delivery Speed -->
+                        <div class="animate-float absolute -left-3 sm:-left-6 top-12 sm:top-16 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-float border border-emeraldDeep/10 flex items-center gap-3 max-w-[210px]">
+                            <div class="w-10 h-10 rounded-xl bg-roseSoft text-dustyRose flex items-center justify-center shrink-0 text-lg">
+                                🚀
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-emeraldDeep">2 soatda yetkazish</p>
+                                <p class="text-[11px] text-charcoal/65">Toshkent shahri bo‘ylab</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2: Freshness Guarantee -->
+                        <div class="animate-float-delayed absolute -right-3 sm:-right-6 bottom-10 sm:bottom-14 bg-emeraldDeep text-ivory px-4 py-3.5 rounded-2xl shadow-float flex items-center gap-3 max-w-[225px]">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 text-goldAccent flex items-center justify-center shrink-0 text-lg">
+                                🌿
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-ivory">100% Yangi gullar</p>
+                                <p class="text-[11px] text-ivory/75">Yuborishdan oldin foto hisobot</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CATALOG SECTION ==================== -->
+    <section id="katalog" class="py-14 sm:py-20 bg-white/60 border-y border-emeraldDeep/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] text-goldAccent font-bold">Eksklyuziv Kolleksiya</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-emeraldDeep mt-1">Sara guldastalar katalogi</h2>
+                </div>
+
+                <!-- Live Search Input -->
+                <div class="relative w-full md:w-80">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        oninput="filterProducts()" 
+                        placeholder="Gul nomi bo‘yicha qidirish (masalan: Pion)..." 
+                        class="w-full pl-11 pr-4 py-3 rounded-full bg-ivory border border-emeraldDeep/15 text-sm text-charcoal placeholder:text-charcoal/45 focus:outline-none focus:border-emeraldDeep focus:ring-2 focus:ring-emeraldDeep/10 transition-all"
+                    >
+                    <svg class="w-5 h-5 text-charcoal/45 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Interactive Category Pills -->
+            <div id="categoryFilters" class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-4 mb-8">
+                <button onclick="setCategory('Barchasi')" data-cat="Barchasi" class="cat-btn active shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-emeraldDeep text-ivory shadow-soft">
+                    Barchasi
+                </button>
+                <button onclick="setCategory('Atirgullar')" data-cat="Atirgullar" class="cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10">
+                    🌹 Atirgullar
+                </button>
+                <button onclick="setCategory('Pionlar')" data-cat="Pionlar" class="cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10">
+                    🌸 Pionlar
+                </button>
+                <button onclick="setCategory('Qutili gullar')" data-cat="Qutili gullar" class="cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10">
+                    🎁 Qutili gullar
+                </button>
+                <button onclick="setCategory('To\'y guldastalari')" data-cat="To'y guldastalari" class="cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10">
+                    💍 To‘y guldastalari
+                </button>
+                <button onclick="setCategory('Kaktus va xona gullari')" data-cat="Kaktus va xona gullari" class="cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10">
+                    🪴 Kaktus va xona gullari
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+                <!-- Products rendered dynamically via JS -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-ivory rounded-3xl border border-emeraldDeep/10">
+                <div class="text-5xl mb-3">🥀</div>
+                <h3 class="font-serif text-2xl font-bold text-emeraldDeep">Afsuski, bunday guldasta topilmadi</h3>
+                <p class="text-sm text-charcoal/65 mt-1 mb-5">Boshqa kalit so‘z kiritib ko‘ring yoki barcha guldastalarni ko‘ring.</p>
+                <button onclick="resetFilters()" class="px-6 py-2.5 rounded-full bg-emeraldDeep text-ivory text-sm font-semibold hover:bg-emeraldHover transition-colors">
+                    Barcha gullarni ko‘rsatish
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== CUSTOM BOUQUET BUILDER ==================== -->
+    <section id="konstruktor" class="py-16 sm:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-emeraldDeep rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 lg:p-14 text-ivory shadow-float relative overflow-hidden">
+                <!-- Decorative Pattern -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-goldAccent/10 blur-2xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative z-10">
+                    
+                    <!-- Left: Builder Controls -->
+                    <div class="lg:col-span-7 space-y-7">
+                        <div>
+                            <span class="inline-block px-3.5 py-1 rounded-full bg-white/10 text-goldAccent text-xs font-bold uppercase tracking-wider mb-3">
+                                Florist Konstruktori
+                            </span>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ivory">O‘z guldastangizni yarating</h2>
+                            <p class="text-ivory/75 text-sm sm:text-base mt-2">
+                                Sevimli gullaringiz sonini tanlang, qadoq turini belgilang va o‘zingizga xos noyob buket yarating.
+                            </p>
+                        </div>
+
+                        <!-- Step 1: Select Flowers -->
+                        <div class="space-y-3">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-goldAccent">1. Gullarni tanlang (dona hisobida):</h3>
+                            <div id="builderFlowersList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <!-- Rendered via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Wrapping Style -->
+                        <div class="space-y-3">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-goldAccent">2. Qadoqlash uslubi:</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wrappingOptions">
+                                <button type="button" onclick="selectWrapping('Koreyscha mato qog‘oz', 25000, this)" class="wrap-btn active-wrap text-left p-3.5 rounded-2xl bg-white/15 border-2 border-goldAccent transition-all">
+                                    <p class="font-semibold text-sm">Koreyscha qog‘oz</p>
+                                    <p class="text-xs text-goldAccent mt-0.5">+25 000 so‘m</p>
+                                </button>
+                                <button type="button" onclick="selectWrapping('Premium shlyapa qutisi', 65000, this)" class="wrap-btn text-left p-3.5 rounded-2xl bg-white/5 border-2 border-transparent hover:bg-white/10 transition-all">
+                                    <p class="font-semibold text-sm">Shlyapa qutisi</p>
+                                    <p class="text-xs text-ivory/70 mt-0.5">+65 000 so‘m</p>
+                                </button>
+                                <button type="button" onclick="selectWrapping('Tabiiy kraft va lenta', 15000, this)" class="wrap-btn text-left p-3.5 rounded-2xl bg-white/5 border-2 border-transparent hover:bg-white/10 transition-all">
+                                    <p class="font-semibold text-sm">Minimalist kraft</p>
+                                    <p class="text-xs text-ivory/70 mt-0.5">+15 000 so‘m</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Ribbon Color -->
+                        <div class="space-y-3">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-goldAccent">3. Atlant lenta rangi:</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <button type="button" onclick="selectRibbon('Tilla rang', '#C5A059', this)" class="ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 border border-goldAccent text-xs font-semibold">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#C5A059]"></span> Tilla rang
+                                </button>
+                                <button type="button" onclick="selectRibbon('Nozik pushti', '#D4837D', this)" class="ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-semibold">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#D4837D]"></span> Nozik pushti
+                                </button>
+                                <button type="button" onclick="selectRibbon('Fil suyagi (Oq)', '#FAF8F5', this)" class="ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-semibold">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#FAF8F5]"></span> Fil suyagi
+                                </button>
+                                <button type="button" onclick="selectRibbon('Zumrad yashil', '#2E6F40', this)" class="ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-semibold">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-[#2E6F40]"></span> Zumrad yashil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Summary Card -->
+                    <div class="lg:col-span-5 bg-ivory text-charcoal rounded-3xl p-6 sm:p-8 shadow-float">
+                        <div class="flex items-center justify-between border-b border-emeraldDeep/10 pb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-dustyRose">Sizning kompozitsiyangiz</span>
+                                <h3 class="font-serif text-2xl font-bold text-emeraldDeep">Mualliflik Buketi</h3>
+                            </div>
+                            <span class="text-3xl">💐</span>
+                        </div>
+
+                        <!-- Selected Items Summary -->
+                        <div id="builderSummaryList" class="py-5 space-y-2.5 min-h-[150px] text-sm border-b border-emeraldDeep/10">
+                            <!-- Updated dynamically -->
+                        </div>
+
+                        <div class="py-4 space-y-2 text-sm">
+                            <div class="flex justify-between text-charcoal/75">
+                                <span>Qadoq turi:</span>
+                                <span id="summaryWrapName" class="font-semibold text-emeraldDeep">Koreyscha mato qog‘oz</span>
+                            </div>
+                            <div class="flex justify-between text-charcoal/75">
+                                <span>Lenta rangi:</span>
+                                <span id="summaryRibbonName" class="font-semibold text-emeraldDeep">Tilla rang</span>
+                            </div>
+                            <div class="flex justify-between text-charcoal/75">
+                                <span>Tabriknoma + gul ozuqasi:</span>
+                                <span class="font-semibold text-emeraldDeep">Bepul 🎁</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-emeraldDeep/10 flex items-center justify-between mb-6">
+                            <span class="text-sm font-semibold text-charcoal/70">Umumiy narx:</span>
+                            <span id="builderTotalPrice" class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep">280 000 so‘m</span>
+                        </div>
+
+                        <button onclick="addCustomBouquetToCart()" class="w-full py-4 rounded-2xl bg-emeraldDeep hover:bg-emeraldHover text-ivory font-semibold text-base shadow-soft transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                            <span>Savatchaga qo‘shish</span>
+                            <svg class="w-5 h-5 text-goldAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US / DELIVERY ==================== -->
+    <section id="afzalliklar" class="py-14 sm:py-20 bg-cream/60 border-y border-emeraldDeep/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-[0.2em] text-goldAccent font-bold">Bizning Kafolatimiz</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-emeraldDeep mt-1">Nima uchun «Lola &amp; Atirgul»ni tanlashadi?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-ivory p-7 rounded-3xl border border-emeraldDeep/10 shadow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-roseSoft text-dustyRose flex items-center justify-center text-2xl mb-4">⏱️</div>
+                    <h3 class="font-serif text-xl font-bold text-emeraldDeep mb-2">2 soatda yetkazish</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">Buyurtma tasdiqlanganidan so‘ng maxsus sovutgichli avtomobillarda 120 daqiqa ichida manzilga yetkazamiz.</p>
+                </div>
+
+                <div class="bg-ivory p-7 rounded-3xl border border-emeraldDeep/10 shadow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mb-4">📸</div>
+                    <h3 class="font-serif text-xl font-bold text-emeraldDeep mb-2">Yuborishdan oldin foto</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">Guldasta tayyor bo‘lgach, kuryerga berishdan avval sizga Telegram orqali tayyor buket rasmini yuboramiz.</p>
+                </div>
+
+                <div class="bg-ivory p-7 rounded-3xl border border-emeraldDeep/10 shadow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-goldAccent/15 text-goldAccent flex items-center justify-center text-2xl mb-4">🌷</div>
+                    <h3 class="font-serif text-xl font-bold text-emeraldDeep mb-2">7 kunlik tarovat</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">To‘g‘ridan-to‘g‘ri Ekvador va Gollandiya plantatsiyalaridan keltirilgan eng sara gullardan foydalanamiz.</p>
+                </div>
+
+                <div class="bg-ivory p-7 rounded-3xl border border-emeraldDeep/10 shadow-card">
+                    <div class="w-12 h-12 rounded-2xl bg-roseSoft text-dustyRose flex items-center justify-center text-2xl mb-4">💌</div>
+                    <h3 class="font-serif text-xl font-bold text-emeraldDeep mb-2">Maxfiy yetkazib berish</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">Agar xohlasangiz, guldasta kimdan ekanligini sir saqlagan holda qabul qiluvchiga syurpriz qilamiz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CUSTOMER REVIEWS ==================== -->
+    <section id="fikrlar" class="py-14 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-[0.2em] text-goldAccent font-bold">Mijozlarimiz e’tirofi</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-emeraldDeep mt-1">Baxtli lahzalar tarixi</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-7 rounded-3xl shadow-card border border-emeraldDeep/5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-goldAccent text-sm mb-3">★★★★★</div>
+                        <p class="text-sm text-charcoal/80 leading-relaxed italic">
+                            “Onamning tug‘ilgan kunlariga ‘Qirollik Pionlari’ buketini buyurtma qildim. 1.5 soatda yetib keldi, gullar shunchalik yangi va xushbo‘yki, butun uy iforga to‘ldi. Kattakon rahmat!”
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-emeraldDeep/10">
+                        <div class="w-10 h-10 rounded-full bg-emeraldDeep text-ivory font-bold flex items-center justify-center text-sm">M</div>
+                        <div>
+                            <p class="text-sm font-bold text-emeraldDeep">Madina Karimova</p>
+                            <p class="text-xs text-charcoal/55">Toshkent, Mirzo Ulug‘bek tumani</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 rounded-3xl shadow-card border border-emeraldDeep/5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-goldAccent text-sm mb-3">★★★★★</div>
+                        <p class="text-sm text-charcoal/80 leading-relaxed italic">
+                            “Saytdagi konstruktor orqali o‘zim xohlagan rangdagi atirgullarni yig‘dim. Yuborishdan oldin rasmini tashlab berishdi, xuddi suratdagidek chiroyli chiqibdi.”
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-emeraldDeep/10">
+                        <div class="w-10 h-10 rounded-full bg-dustyRose text-white font-bold flex items-center justify-center text-sm">S</div>
+                        <div>
+                            <p class="text-sm font-bold text-emeraldDeep">Sardor Alimov</p>
+                            <p class="text-xs text-charcoal/55">Toshkent, Yunusobod tumani</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-7 rounded-3xl shadow-card border border-emeraldDeep/5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-goldAccent text-sm mb-3">★★★★★</div>
+                        <p class="text-sm text-charcoal/80 leading-relaxed italic">
+                            “To‘yimiz uchun kelin guldastasini shu yerdan oldik. Floristlar juda didli va mas’uliyatli ekan. Kun bo‘yi gullar so‘limay turdi.”
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-6 pt-4 border-t border-emeraldDeep/10">
+                        <div class="w-10 h-10 rounded-full bg-goldAccent text-white font-bold flex items-center justify-center text-sm">N</div>
+                        <div>
+                            <p class="text-sm font-bold text-emeraldDeep">Nilufar Rustamova</p>
+                            <p class="text-xs text-charcoal/55">Toshkent, Shayxontohur tumani</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ACCORDION ==================== -->
+    <section id="savollar" class="py-14 sm:py-20 bg-white/60 border-t border-emeraldDeep/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs uppercase tracking-[0.2em] text-goldAccent font-bold">Ma’lumotnoma</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-emeraldDeep mt-1">Ko‘p beriladigan savollar</h2>
+            </div>
+
+            <div class="space-y-3" id="faqContainer">
+                <div class="bg-ivory rounded-2xl border border-emeraldDeep/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-emeraldDeep text-sm sm:text-base">
+                        <span>Yetkazib berish narxi qancha va qancha vaqt oladi?</span>
+                        <span class="faq-icon text-xl text-goldAccent transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-sm text-charcoal/75 leading-relaxed">
+                        Toshkent shahri bo‘ylab yetkazib berish 30 000 so‘mni tashkil qiladi. 500 000 so‘mdan yuqori buyurtmalar uchun yetkazib berish mutlaqo BEPUL! O‘rtacha yetkazish vaqti 90–120 daqiqa.
+                    </div>
+                </div>
+
+                <div class="bg-ivory rounded-2xl border border-emeraldDeep/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-emeraldDeep text-sm sm:text-base">
+                        <span>To‘lovni qanday usullarda amalga oshirish mumkin?</span>
+                        <span class="faq-icon text-xl text-goldAccent transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-sm text-charcoal/75 leading-relaxed">
+                        Siz Payme, Click, Uzum Bank ilovalari orqali onlayn yoki guldasta qo‘lingizga yetib borganida naqd pul / karta orqali to‘lov qilishingiz mumkin.
+                    </div>
+                </div>
+
+                <div class="bg-ivory rounded-2xl border border-emeraldDeep/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-emeraldDeep text-sm sm:text-base">
+                        <span>Gullar uzoq vaqt yangi turishi uchun nima qilish kerak?</span>
+                        <span class="faq-icon text-xl text-goldAccent transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-sm text-charcoal/75 leading-relaxed">
+                        Har bir buket bilan birga maxsus Chrysal gul ozuqasi beriladi. Gullarni salqin joyga qo‘ying, suvini har 2 kunda almashtiring va poyasini 1 sm qiyalab kesib turing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-emeraldDeep text-ivory pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Col 1: Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-full bg-white/10 text-goldAccent flex items-center justify-center">
+                            🌸
+                        </div>
+                        <span class="font-serif text-2xl font-bold text-ivory">Lola &amp; Atirgul</span>
+                    </div>
+                    <p class="text-sm text-ivory/70 leading-relaxed">
+                        Toshkentdagi premium floristika studiyasi. Biz har bir guldastani san’at asari darajasida yaratamiz.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#top" onclick="showToast('Telegram kanalimiz: @lola_atirgul_uz')" class="px-4 py-2 rounded-full bg-white/10 hover:bg-goldAccent hover:text-emeraldDeep text-xs font-semibold transition-colors">
+                            Telegram
+                        </a>
+                        <a href="#top" onclick="showToast('Instagram sahifamiz: @lola.atirgul.uz')" class="px-4 py-2 rounded-full bg-white/10 hover:bg-goldAccent hover:text-emeraldDeep text-xs font-semibold transition-colors">
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Navigation -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldAccent mb-4">Bo‘limlar</h4>
+                    <ul class="space-y-2.5 text-sm text-ivory/75">
+                        <li><a href="#katalog" class="hover:text-goldAccent transition-colors">Guldastalar katalogi</a></li>
+                        <li><a href="#konstruktor" class="hover:text-goldAccent transition-colors">Buket konstruktori</a></li>
+                        <li><a href="#afzalliklar" class="hover:text-goldAccent transition-colors">Yetkazib berish</a></li>
+                        <li><a href="#fikrlar" class="hover:text-goldAccent transition-colors">Mijozlar fikri</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Categories -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldAccent mb-4">Toifalar</h4>
+                    <ul class="space-y-2.5 text-sm text-ivory/75">
+                        <li><a href="#katalog" onclick="setCategory('Atirgullar')" class="hover:text-goldAccent transition-colors">Ekvador atirgullari</a></li>
+                        <li><a href="#katalog" onclick="setCategory('Pionlar')" class="hover:text-goldAccent transition-colors">Gollandiya pionlari</a></li>
+                        <li><a href="#katalog" onclick="setCategory('Qutili gullar')" class="hover:text-goldAccent transition-colors">Qutili kompozitsiyalar</a></li>
+                        <li><a href="#katalog" onclick="setCategory('To\'y guldastalari')" class="hover:text-goldAccent transition-colors">Kelin guldastalari</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldAccent mb-4">Aloqa</h4>
+                    <ul class="space-y-3 text-sm text-ivory/75">
+                        <li>📍 Toshkent sh., Amir Temur shoh ko‘chasi, 45-uy</li>
+                        <li>📞 <a href="tel:+998901234567" class="hover:text-goldAccent font-semibold">+998 90 123-45-67</a></li>
+                        <li>🕒 Ish vaqti: 08:00 — 23:00 (Har kuni)</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ivory/50">
+                <p>© 2026 «Lola &amp; Atirgul» Floristika Studiyasi. Barcha huquqlar himoyalangan.</p>
+                <p>Mehr bilan yaratilgan 🌿</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== QUICK VIEW PRODUCT MODAL ==================== -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-ivory rounded-3xl max-w-3xl w-full overflow-hidden shadow-float border border-emeraldDeep/10 animate-[fadeIn_0.2s_ease-out] max-h-[90vh] flex flex-col md:flex-row relative">
+            
+            <!-- Close Button -->
+            <button onclick="closeProductModal()" aria-label="Yopish" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-emeraldDeep hover:text-ivory text-emeraldDeep flex items-center justify-center shadow-md transition-colors">
+                ✕
+            </button>
+
+            <!-- Left Image -->
+            <div class="md:w-1/2 bg-cream h-64 md:h-auto relative">
+                <img id="modalImg" src="" alt="Guldasta" onerror="handleImgError(this, 'Guldasta')" class="w-full h-full object-cover">
+                <span id="modalBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emeraldDeep text-ivory text-xs font-bold"></span>
+            </div>
+
+            <!-- Right Details -->
+            <div class="md:w-1/2 p-6 sm:p-8 overflow-y-auto space-y-5">
+                <div>
+                    <span id="modalCategory" class="text-xs font-bold uppercase tracking-wider text-goldAccent"></span>
+                    <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep mt-1"></h3>
+                    <div class="flex items-center gap-2 mt-1.5 text-xs text-charcoal/70">
+                        <span class="text-goldAccent font-bold">★ <span id="modalRating"></span></span>
+                        <span>•</span>
+                        <span>Tarkibi: <span id="modalComposition" class="font-medium text-charcoal"></span></span>
+                    </div>
+                </div>
+
+                <p id="modalDesc" class="text-sm text-charcoal/75 leading-relaxed"></p>
+
+                <!-- Size Selector -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-emeraldDeep mb-2">O‘lchamni tanlang:</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="selectModalSize('Kichik', 0.85, this)" class="size-btn py-2.5 px-2 rounded-xl border border-emeraldDeep/15 text-xs font-semibold text-center hover:border-emeraldDeep transition-all">
+                            Kichik (S)
+                        </button>
+                        <button type="button" onclick="selectModalSize('O‘rtacha', 1, this)" class="size-btn active-size py-2.5 px-2 rounded-xl bg-emeraldDeep text-ivory text-xs font-semibold text-center transition-all">
+                            O‘rtacha (M)
+                        </button>
+                        <button type="button" onclick="selectModalSize('Katta (VIP)', 1.35, this)" class="size-btn py-2.5 px-2 rounded-xl border border-emeraldDeep/15 text-xs font-semibold text-center hover:border-emeraldDeep transition-all">
+                            Katta (L)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Greeting Card Input -->
+                <div>
+                    <label for="modalCardNote" class="block text-xs font-bold uppercase tracking-wider text-emeraldDeep mb-1.5">Tabriknoma matni (bepul):</label>
+                    <input type="text" id="modalCardNote" placeholder="Masalan: Tug‘ilgan kuningiz bilan azizim!" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-emeraldDeep">
+                </div>
+
+                <!-- Price & Add to Cart -->
+                <div class="pt-3 border-t border-emeraldDeep/10 flex items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-charcoal/60 block">Narxi:</span>
+                        <span id="modalPrice" class="font-serif text-2xl font-bold text-emeraldDeep"></span>
+                    </div>
+                    <button onclick="confirmAddFromModal()" class="flex-1 py-3.5 px-6 rounded-2xl bg-emeraldDeep hover:bg-emeraldHover text-ivory font-semibold text-sm shadow-soft transition-all active:scale-95">
+                        Savatchaga qo‘shish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE-OVER SHOPPING CART & CHECKOUT DRAWER ==================== -->
+    <div id="cartOverlay" onclick="toggleCart(false)" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden transition-opacity"></div>
+    
+    <aside id="cartDrawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-ivory shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        
+        <!-- Drawer Header -->
+        <div class="px-6 py-5 bg-white border-b border-emeraldDeep/10 flex items-center justify-between">
+            <div>
+                <h3 class="font-serif text-2xl font-bold text-emeraldDeep">Savatcha</h3>
+                <p id="cartHeaderSubtitle" class="text-xs text-charcoal/60">Tanlangan guldastalar</p>
+            </div>
+            <button onclick="toggleCart(false)" aria-label="Savatchani yopish" class="w-9 h-9 rounded-full bg-cream hover:bg-emeraldDeep hover:text-ivory text-emeraldDeep flex items-center justify-center transition-colors">
+                ✕
+            </button>
+        </div>
+
+        <!-- Step 1: Cart Items View -->
+        <div id="cartStepItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Cart items injected here -->
+        </div>
+
+        <!-- Step 2: Checkout Form View (Hidden initially) -->
+        <div id="cartStepCheckout" class="hidden flex-1 overflow-y-auto p-6 space-y-4">
+            <button onclick="switchCartView('items')" class="text-xs font-semibold text-emeraldDeep hover:underline flex items-center gap-1 mb-2">
+                ← Savatchaga qaytish
+            </button>
+            <h4 class="font-serif text-xl font-bold text-emeraldDeep">Yetkazib berish ma’lumotlari</h4>
+            
+            <form id="checkoutForm" onsubmit="submitOrder(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-bold text-charcoal/80 mb-1">Ismingiz *</label>
+                    <input type="text" id="custName" required placeholder="Ism va familiyangiz" class="w-full px-4 py-3 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-emeraldDeep">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-charcoal/80 mb-1">Telefon raqamingiz *</label>
+                    <input type="tel" id="custPhone" required placeholder="+998 90 123-45-67" class="w-full px-4 py-3 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-emeraldDeep">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-charcoal/80 mb-1">Yetkazib berish manzili *</label>
+                    <textarea id="custAddress" required rows="2" placeholder="Tuman, ko‘cha, uy va xonadon raqami..." class="w-full px-4 py-3 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-emeraldDeep"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-charcoal/80 mb-1">Yetkazish vaqti</label>
+                    <select id="custTime" class="w-full px-4 py-3 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-emeraldDeep">
+                        <option value="Eng tez (2 soat ichida)">Eng tez (2 soat ichida)</option>
+                        <option value="Bugun kechqurun (18:00 - 21:00)">Bugun kechqurun (18:00 - 21:00)</option>
+                        <option value="Ertaga ertalab (09:00 - 12:00)">Ertaga ertalab (09:00 - 12:00)</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 pt-1">
+                    <input type="checkbox" id="anonymousDelivery" class="w-4 h-4 accent-emeraldDeep rounded">
+                    <label for="anonymousDelivery" class="text-xs text-charcoal/80">Maxfiy syurpriz (kimdan ekanligi aytilmasin)</label>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 rounded-2xl bg-emeraldDeep hover:bg-emeraldHover text-ivory font-semibold text-sm shadow-float transition-all">
+                        Buyurtmani tasdiqlash
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Order Success Confirmation (Hidden initially) -->
+        <div id="cartStepSuccess" class="hidden flex-1 overflow-y-auto p-8 text-center flex flex-col items-center justify-center space-y-4">
+            <div class="w-20 h-20 rounded-full bg-emeraldDeep text-goldAccent flex items-center justify-center text-4xl shadow-float animate-bounce">
+                ✓
+            </div>
+            <h4 class="font-serif text-2xl font-bold text-emeraldDeep">Buyurtmangiz qabul qilindi!</h4>
+            <p class="text-sm text-charcoal/75 leading-relaxed">
+                Rahmat, <span id="successCustName" class="font-bold text-emeraldDeep"></span>! Operatorimiz 5 daqiqa ichida <span id="successCustPhone" class="font-bold"></span> raqamiga bog‘lanadi va guldasta tayyor bo‘lgach suratini yuboradi.
+            </p>
+            <div class="bg-white p-4 rounded-2xl border border-emeraldDeep/10 w-full text-xs text-charcoal/70">
+                Buyurtma raqami: <span id="orderNumberDisplay" class="font-bold text-emeraldDeep">#LA-8492</span>
+            </div>
+            <button onclick="resetAfterOrder()" class="mt-4 px-8 py-3.5 rounded-full bg-emeraldDeep text-ivory text-sm font-semibold hover:bg-emeraldHover transition-colors">
+                Xaridni davom ettirish
+            </button>
+        </div>
+
+        <!-- Drawer Footer (Summary & Promo) -->
+        <div id="cartFooter" class="p-6 bg-white border-t border-emeraldDeep/10 space-y-4">
+            <!-- Promo Code Input -->
+            <div class="flex gap-2">
+                <input type="text" id="promoInput" placeholder="Promokod (masalan: GUL10)" class="flex-1 px-3.5 py-2.5 rounded-xl bg-ivory border border-emeraldDeep/15 text-xs uppercase focus:outline-none focus:border-emeraldDeep">
+                <button onclick="applyPromoCode()" class="px-4 py-2.5 rounded-xl bg-cream hover:bg-emeraldDeep hover:text-ivory text-emeraldDeep text-xs font-bold transition-colors">
+                    Qo‘llash
+                </button>
+            </div>
+
+            <!-- Totals -->
+            <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between text-charcoal/70">
+                    <span>Mahsulotlar:</span>
+                    <span id="cartSubtotal">0 so‘m</span>
+                </div>
+                <div id="discountRow" class="hidden flex justify-between text-dustyRose font-semibold">
+                    <span>Chegirma (10%):</span>
+                    <span id="cartDiscount">-0 so‘m</span>
+                </div>
+                <div class="flex justify-between text-charcoal/70">
+                    <span>Yetkazib berish:</span>
+                    <span id="cartDeliveryFee">30 000 so‘m</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-emeraldDeep pt-2 border-t border-emeraldDeep/10">
+                    <span>Jami to‘lov:</span>
+                    <span id="cartTotal" class="font-serif text-xl">0 so‘m</span>
+                </div>
+            </div>
+
+            <button onclick="switchCartView('checkout')" class="w-full py-4 rounded-2xl bg-emeraldDeep hover:bg-emeraldHover text-ivory font-semibold text-sm shadow-soft transition-all active:scale-[0.98]">
+                Buyurtma berish →
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- ==================== JAVASCRIPT APPLICATION LOGIC ==================== -->
+    <script>
+        /**
+         * 1. IMAGE FALLBACK HANDLER (Prevents any 404 or broken image icons)
+         */
+        function handleImgError(imgElement, labelText = 'Lola & Atirgul') {
+            imgElement.onerror = null; // Prevent infinite loop
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750">
+                    <rect width="600" height="750" fill="#F3EFEA"/>
+                    <circle cx="300" cy="310" r="95" fill="#D4837D" fill-opacity="0.22"/>
+                    <circle cx="300" cy="310" r="55" fill="#1B3B2B" fill-opacity="0.15"/>
+                    <text x="300" y="325" font-family="Georgia, serif" font-size="48" text-anchor="middle" fill="#1B3B2B">🌸</text>
+                    <text x="300" y="455" font-family="Georgia, serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1B3B2B">${labelText}</text>
+                    <text x="300" y="488" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#C5A059">LOLA &amp; ATIRGUL FLORISTIKA</text>
+                </svg>
+            `;
+            imgElement.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+        }
+
+        /**
+         * 2. CURATED PRODUCT CATALOG DATA
+         */
+        const products = [
+            {
+                id: 1,
+                name: "Qirollik Pushti Pionlari",
+                category: "Pionlar",
+                price: 540000,
+                rating: "5.0",
+                badge: "Hit",
+                composition: "15 dona Sara Gollandiya pionlari, evkalipt barglari",
+                description: "Nozik pushti rangdagi xushbo‘y pionlardan tashkil topgan hashamatli guldasta. Eng samimiy tuyg‘ular uchun mukammal tanlov.",
+                image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2,
+                name: "Ekvador Qizil Atirgullari (25 dona)",
+                category: "Atirgullar",
+                price: 620000,
+                rating: "4.9",
+                badge: "Mashhur",
+                composition: "25 dona baland bo‘yli Explorer qizil atirgullari, atlas lenta",
+                description: "Chuqur baxmal rangidagi yirik g‘unchali Ekvador atirgullari. Sevgi va ehtiromning abadiy ramzi.",
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                name: "Baxmal Qutidagi «Malika»",
+                category: "Qutili gullar",
+                price: 490000,
+                rating: "4.9",
+                badge: "Yangi",
+                composition: "Kustovoy atirgullar, eustoma, gipsofila, maxsus shlyapa qutisi",
+                description: "Maxsus namlik saqlovchi gubka ustiga terilgan kompozitsiya — vaza talab qilmaydi va uzoq vaqt yangi turadi.",
+                image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                name: "Oq Bulut — Kelin Guldastasi",
+                category: "To'y guldastalari",
+                price: 450000,
+                rating: "5.0",
+                badge: "Eksklyuziv",
+                composition: "Oq pion atirgullar, freziya, kumushrang evkalipt",
+                description: "Unutilmas nikoh oqshomi uchun yengil, nafis va zamonaviy uslubda yig‘ilgan kelin buketi.",
+                image: "https://images.unsplash.com/photo-1523694576729-dc99e9c0f9b4?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                name: "Bahoriy Lola & Gipsofila",
+                category: "Pionlar",
+                price: 360000,
+                rating: "4.8",
+                badge: "Chegirma",
+                composition: "21 dona Gollandiya lolalari, oq gipsofila buluti",
+                description: "Kayfiyatni bir zumda ko‘taruvchi yorqin va mayin bahoriy kompozitsiya.",
+                image: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                name: "Monstera Deliciosa (Keramik tuvakda)",
+                category: "Kaktus va xona gullari",
+                price: 390000,
+                rating: "4.9",
+                badge: "Interyer",
+                composition: "Jonli Monstera o‘simligi, qo‘lda yasalgan oq keramik kashpo",
+                description: "Uy yoki ofis interyeriga tabiiy ko‘rk bag‘ishlovchi va havoni tozalovchi dekorativ o‘simlik.",
+                image: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 7,
+                name: "Shaftolirang «Juletta» Buketi",
+                category: "Atirgullar",
+                price: 580000,
+                rating: "5.0",
+                badge: "Premium",
+                composition: "David Austin Juletta atirgullari, mattiola, pistashka barglari",
+                description: "Dunyodagi eng mashhur pionsimon atirgul navlaridan biri bo‘lgan Juletta gullaridan mualliflik guldastasi.",
+                image: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 8,
+                name: "Sukkulentlar Bog‘i (Florarium)",
+                category: "Kaktus va xona gullari",
+                price: 290000,
+                rating: "4.8",
+                badge: "Sovg‘abop",
+                composition: "5 xil noyob kaktus va sukkulentlar, dekorativ toshlar",
+                description: "Parvarishi juda oson bo‘lgan va ish stolida ajoyib ko‘rinadigan mini-ekotizim.",
+                image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        /**
+         * 3. CUSTOM BOUQUET BUILDER DATA
+         */
+        const builderFlowers = [
+            { id: 'red_rose', name: 'Qizil atirgul', price: 25000, count: 5 },
+            { id: 'white_peony', name: 'Oq pion', price: 45000, count: 3 },
+            { id: 'tulip', name: 'Pushti lola', price: 18000, count: 0 },
+            { id: 'gypsophila', name: 'Gipsofila shoxi', price: 20000, count: 0 }
+        ];
+        let builderState = {
+            wrappingName: 'Koreyscha mato qog‘oz',
+            wrappingPrice: 25000,
+            ribbonName: 'Tilla rang'
+        };
+
+        /**
+         * 4. APPLICATION STATE (Category, Cart, Promo, Modal)
+         */
+        let currentCategory = 'Barchasi';
+        let cart = [];
+        let promoDiscount = 0; // 0.10 for 10%
+        let currentModalProduct = null;
+        let currentModalMultiplier = 1;
+        let currentModalSizeName = 'O‘rtacha';
+
+        /**
+         * UTILITY: Format UZS Currency
+         */
+        function formatUZS(amount) {
+            return Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so‘m";
+        }
+
+        /**
+         * UTILITY: Toast Notification
+         */
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto bg-emeraldDeep text-ivory px-4 py-3 rounded-2xl shadow-float border border-goldAccent/30 text-xs sm:text-sm font-medium flex items-center justify-between gap-3 transition-all duration-300';
+            toast.innerHTML = `<span>${message}</span><span class="text-goldAccent font-bold">✓</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        /**
+         * RENDER CATALOG PRODUCTS
+         */
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = items.map(item => `
+                <article class="flower-card bg-ivory rounded-3xl overflow-hidden border border-emeraldDeep/10 shadow-card flex flex-col justify-between group">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative aspect-[4/4.5] overflow-hidden bg-cream cursor-pointer" onclick="openProductModal(${item.id})">
+                            <img 
+                                src="${item.image}" 
+                                alt="${item.name}" 
+                                loading="lazy"
+                                onerror="handleImgError(this, '${item.name.replace(/'/g, "\\'")}')"
+                                class="flower-card-img w-full h-full object-cover"
+                            >
+                            <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-xs text-emeraldDeep text-xs font-bold shadow-xs">
+                                ${item.badge}
+                            </span>
+                            <button 
+                                type="button"
+                                aria-label="Batafsil ko‘rish"
+                                class="absolute bottom-3.5 right-3.5 px-3.5 py-1.5 rounded-full bg-emeraldDeep/90 text-ivory text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                                Batafsil
+                            </button>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-5">
+                            <div class="flex items-center justify-between text-xs text-charcoal/60 mb-1">
+                                <span>${item.category}</span>
+                                <span class="text-goldAccent font-bold">★ ${item.rating}</span>
+                            </div>
+                            <h3 onclick="openProductModal(${item.id})" class="font-serif text-lg sm:text-xl font-bold text-emeraldDeep hover:text-dustyRose transition-colors cursor-pointer line-clamp-1">
+                                ${item.name}
+                            </h3>
+                            <p class="text-xs text-charcoal/65 mt-1.5 line-clamp-2 leading-relaxed">
+                                ${item.composition}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer -->
+                    <div class="px-5 pb-5 pt-2 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[11px] text-charcoal/50 block">Narxi:</span>
+                            <span class="font-serif text-lg font-bold text-emeraldDeep">${formatUZS(item.price)}</span>
+                        </div>
+                        <button 
+                            onclick="quickAddToCart(${item.id})" 
+                            class="px-4 py-2.5 rounded-full bg-emeraldDeep hover:bg-emeraldHover text-ivory text-xs font-semibold transition-all active:scale-95 shadow-xs">
+                            + Savatga
+                        </button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        /**
+         * FILTER & SEARCH LOGIC
+         */
+        function setCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = 'cat-btn active shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-emeraldDeep text-ivory shadow-soft';
+                } else {
+                    btn.className = 'cat-btn shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-ivory text-charcoal/80 hover:bg-cream border border-emeraldDeep/10';
+                }
+            });
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const filtered = products.filter(p => {
+                const matchesCat = currentCategory === 'Barchasi' || p.category === currentCategory;
+                const matchesQuery = p.name.toLowerCase().includes(query) || p.composition.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+            renderProducts(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            setCategory('Barchasi');
+        }
+
+        /**
+         * QUICK VIEW MODAL LOGIC
+         */
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            currentModalProduct = product;
+            currentModalMultiplier = 1;
+            currentModalSizeName = 'O‘rtacha';
+
+            document.getElementById('modalImg').src = product.image;
+            document.getElementById('modalBadge').textContent = product.badge;
+            document.getElementById('modalCategory').textContent = product.category;
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalRating').textContent = product.rating;
+            document.getElementById('modalComposition').textContent = product.composition;
+            document.getElementById('modalDesc').textContent = product.description;
+            document.getElementById('modalCardNote').value = '';
+            document.getElementById('modalPrice').textContent = formatUZS(product.price);
+
+            // Reset size buttons
+            document.querySelectorAll('.size-btn').forEach((btn, idx) => {
+                if (idx === 1) {
+                    btn.className = 'size-btn active-size py-2.5 px-2 rounded-xl bg-emeraldDeep text-ivory text-xs font-semibold text-center transition-all';
+                } else {
+                    btn.className = 'size-btn py-2.5 px-2 rounded-xl border border-emeraldDeep/15 text-xs font-semibold text-center hover:border-emeraldDeep transition-all';
+                }
+            });
+
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function selectModalSize(sizeName, multiplier, btnEl) {
+            currentModalSizeName = sizeName;
+            currentModalMultiplier = multiplier;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = 'size-btn py-2.5 px-2 rounded-xl border border-emeraldDeep/15 text-xs font-semibold text-center hover:border-emeraldDeep transition-all';
+            });
+            btnEl.className = 'size-btn active-size py-2.5 px-2 rounded-xl bg-emeraldDeep text-ivory text-xs font-semibold text-center transition-all';
+            
+            const updatedPrice = Math.round((currentModalProduct.price * multiplier) / 5000) * 5000;
+            document.getElementById('modalPrice').textContent = formatUZS(updatedPrice);
+        }
+
+        function confirmAddFromModal() {
+            if (!currentModalProduct) return;
+            const finalPrice = Math.round((currentModalProduct.price * currentModalMultiplier) / 5000) * 5000;
+            const note = document.getElementById('modalCardNote').value.trim();
+
+            addToCart({
+                uid: `${currentModalProduct.id}-${currentModalSizeName}`,
+                name: `${currentModalProduct.name} (${currentModalSizeName})`,
+                price: finalPrice,
+                image: currentModalProduct.image,
+                note: note
+            });
+
+            closeProductModal();
+        }
+
+        function quickAddToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+            addToCart({
+                uid: `${product.id}-O‘rtacha`,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                note: ''
+            });
+        }
+
+        /**
+         * CUSTOM BOUQUET BUILDER LOGIC
+         */
+        function renderBuilder() {
+            const list = document.getElementById('builderFlowersList');
+            list.innerHTML = builderFlowers.map((f, idx) => `
+                <div class="flex items-center justify-between bg-white/10 p-3.5 rounded-2xl border border-white/10">
+                    <div>
+                        <p class="font-semibold text-sm text-ivory">${f.name}</p>
+                        <p class="text-xs text-goldAccent">${formatUZS(f.price)} / dona</p>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <button type="button" onclick="updateBuilderFlower(${idx}, -1)" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center font-bold text-sm">−</button>
+                        <span class="w-5 text-center font-bold text-sm">${f.count}</span>
+                        <button type="button" onclick="updateBuilderFlower(${idx}, 1)" class="w-8 h-8 rounded-full bg-goldAccent text-emeraldDeep hover:opacity-90 flex items-center justify-center font-bold text-sm">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateBuilderSummary();
+        }
+
+        function updateBuilderFlower(index, delta) {
+            const nextVal = builderFlowers[index].count + delta;
+            if (nextVal >= 0 && nextVal <= 51) {
+                builderFlowers[index].count = nextVal;
+                renderBuilder();
+            }
+        }
+
+        function selectWrapping(name, price, btnEl) {
+            builderState.wrappingName = name;
+            builderState.wrappingPrice = price;
+            document.querySelectorAll('.wrap-btn').forEach(b => {
+                b.className = 'wrap-btn text-left p-3.5 rounded-2xl bg-white/5 border-2 border-transparent hover:bg-white/10 transition-all';
+            });
+            btnEl.className = 'wrap-btn active-wrap text-left p-3.5 rounded-2xl bg-white/15 border-2 border-goldAccent transition-all';
+            updateBuilderSummary();
+        }
+
+        function selectRibbon(name, colorHex, btnEl) {
+            builderState.ribbonName = name;
+            document.querySelectorAll('.ribbon-btn').forEach(b => {
+                b.className = 'ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-semibold';
+            });
+            btnEl.className = 'ribbon-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 border border-goldAccent text-xs font-semibold';
+            updateBuilderSummary();
+        }
+
+        function updateBuilderSummary() {
+            const summaryList = document.getElementById('builderSummaryList');
+            const selected = builderFlowers.filter(f => f.count > 0);
+            
+            let flowersTotal = 0;
+            if (selected.length === 0) {
+                summaryList.innerHTML = `<p class="text-charcoal/50 italic text-xs py-6 text-center">Kamida 1 dona gul tanlang...</p>`;
+            } else {
+                summaryList.innerHTML = selected.map(f => {
+                    const sub = f.count * f.price;
+                    flowersTotal += sub;
+                    return `
+                        <div class="flex justify-between items-center">
+                            <span class="text-charcoal/85">${f.name} × <b>${f.count} dona</b></span>
+                            <span class="font-semibold text-emeraldDeep">${formatUZS(sub)}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const grandTotal = flowersTotal + builderState.wrappingPrice;
+            document.getElementById('summaryWrapName').textContent = builderState.wrappingName;
+            document.getElementById('summaryRibbonName').textContent = builderState.ribbonName;
+            document.getElementById('builderTotalPrice').textContent = formatUZS(grandTotal);
+            return { selected, grandTotal };
+        }
+
+        function addCustomBouquetToCart() {
+            const { selected, grandTotal } = updateBuilderSummary();
+            if (selected.length === 0) {
+                showToast('Iltimos, kamida bitta gul turini tanlang!');
+                return;
+            }
+            const desc = selected.map(f => `${f.name} (${f.count})`).join(', ');
+            addToCart({
+                uid: `custom-${Date.now()}`,
+                name: `Mualliflik Buketi (${builderState.wrappingName})`,
+                price: grandTotal,
+                image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=400&q=80",
+                note: `Tarkibi: ${desc} | Lenta: ${builderState.ribbonName}`
+            });
+        }
+
+        /**
+         * SHOPPING CART & CHECKOUT SYSTEM
+         */
+        function addToCart(item) {
+            const existing = cart.find(c => c.uid === item.uid);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`«${item.name}» savatchaga qo‘shildi`);
+        }
+
+        function changeCartQty(uid, delta) {
+            const idx = cart.findIndex(c => c.uid === uid);
+            if (idx === -1) return;
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) {
+                cart.splice(idx, 1);
+            }
+            updateCartUI();
+        }
+
+        function applyPromoCode() {
+            const code = document.getElementById('promoInput').value.trim().toUpperCase();
+            if (code === 'GUL10') {
+                promoDiscount = 0.10;
+                showToast('🎉 GUL10 promokodi qo‘llandi: 10% chegirma!');
+                updateCartUI();
+            } else {
+                showToast('Noto‘g‘ri promokod. Sinab ko‘ring: GUL10');
+            }
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('cartBadge').textContent = totalCount;
+
+            const container = document.getElementById('cartStepItems');
+            const footer = document.getElementById('cartFooter');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 space-y-3">
+                        <div class="text-5xl">🛍️</div>
+                        <h4 class="font-serif text-xl font-bold text-emeraldDeep">Savatchangiz hozircha bo‘sh</h4>
+                        <p class="text-xs text-charcoal/60 max-w-xs mx-auto">Katalogdan o‘zingizga yoqqan guldastani tanlang yoki konstruktor orqali yarating.</p>
+                    </div>
+                `;
+                footer.classList.add('hidden');
+                return;
+            }
+
+            footer.classList.remove('hidden');
+            container.innerHTML = cart.map(item => `
+                <div class="bg-white p-3.5 rounded-2xl border border-emeraldDeep/10 flex gap-3.5 items-center shadow-xs">
+                    <img src="${item.image}" alt="${item.name}" onerror="handleImgError(this, 'Buket')" class="w-16 h-20 rounded-xl object-cover shrink-0 bg-cream">
+                    <div class="flex-1 min-w-0">
+                        <h5 class="font-serif font-bold text-sm text-emeraldDeep truncate">${item.name}</h5>
+                        ${item.note ? `<p class="text-[11px] text-charcoal/60 truncate mt-0.5">${item.note}</p>` : ''}
+                        <p class="text-xs font-bold text-goldAccent mt-1">${formatUZS(item.price)}</p>
+                        
+                        <div class="flex items-center gap-2.5 mt-2">
+                            <button onclick="changeCartQty('${item.uid}', -1)" class="w-7 h-7 rounded-full bg-cream hover:bg-emeraldDeep hover:text-ivory text-emeraldDeep font-bold text-xs flex items-center justify-center transition-colors">−</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                            <button onclick="changeCartQty('${item.uid}', 1)" class="w-7 h-7 rounded-full bg-cream hover:bg-emeraldDeep hover:text-ivory text-emeraldDeep font-bold text-xs flex items-center justify-center transition-colors">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Calculate totals
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const discountAmount = subtotal * promoDiscount;
+            const afterDiscount = subtotal - discountAmount;
+            const deliveryFee = afterDiscount >= 500000 ? 0 : 30000;
+            const finalTotal = afterDiscount + deliveryFee;
+
+            document.getElementById('cartSubtotal').textContent = formatUZS(subtotal);
+            
+            const discountRow = document.getElementById('discountRow');
+            if (promoDiscount > 0) {
+                discountRow.classList.remove('hidden');
+                document.getElementById('cartDiscount').textContent = `-${formatUZS(discountAmount)}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            document.getElementById('cartDeliveryFee').textContent = deliveryFee === 0 ? 'Bepul 🎉' : formatUZS(deliveryFee);
+            document.getElementById('cartTotal').textContent = formatUZS(finalTotal);
+        }
+
+        function toggleCart(open) {
+            const overlay = document.getElementById('cartOverlay');
+            const drawer = document.getElementById('cartDrawer');
+            if (open) {
+                switchCartView('items');
+                overlay.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function switchCartView(step) {
+            const itemsStep = document.getElementById('cartStepItems');
+            const checkoutStep = document.getElementById('cartStepCheckout');
+            const successStep = document.getElementById('cartStepSuccess');
+            const footer = document.getElementById('cartFooter');
+
+            itemsStep.classList.add('hidden');
+            checkoutStep.classList.add('hidden');
+            successStep.classList.add('hidden');
+
+            if (step === 'items') {
+                itemsStep.classList.remove('hidden');
+                if (cart.length > 0) footer.classList.remove('hidden');
+            } else if (step === 'checkout') {
+                checkoutStep.classList.remove('hidden');
+                footer.classList.add('hidden');
+            } else if (step === 'success') {
+                successStep.classList.remove('hidden');
+                footer.classList.add('hidden');
+            }
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+
+            document.getElementById('successCustName').textContent = name;
+            document.getElementById('successCustPhone').textContent = phone;
+            document.getElementById('orderNumberDisplay').textContent = '#LA-' + Math.floor(1000 + Math.random() * 9000);
+
+            cart = [];
+            promoDiscount = 0;
+            updateCartUI();
+            switchCartView('success');
+        }
+
+        function resetAfterOrder() {
+            document.getElementById('checkoutForm').reset();
+            toggleCart(false);
+        }
+
+        /**
+         * MOBILE MENU & FAQ ACCORDION
+         */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            answer.classList.toggle('hidden');
+            icon.textContent = answer.classList.contains('hidden') ? '+' : '−';
+        }
+
+        /**
+         * INITIALIZE APP ON LOAD
+         */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            renderBuilder();
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
